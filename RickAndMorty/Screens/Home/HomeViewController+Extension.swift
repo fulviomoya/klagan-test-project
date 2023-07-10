@@ -16,8 +16,8 @@ extension HomeViewController : UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewController.cellIdentifier,
                                                       for: indexPath) as! CharacterViewCell
         
-        let character = CharacterModel(id: 1, name: "Juan", species: "Humano")
-        cell.setup(with: character)
+      //  let character = CharacterModel(id: 1, name: "Juan", species: "Humano")
+        //cell.setup(with: character)
         return cell
     }
 }

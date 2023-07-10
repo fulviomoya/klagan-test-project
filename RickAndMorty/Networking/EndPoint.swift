@@ -28,7 +28,7 @@ struct EndPoint: EndPointProtocol {
         self.path = path
     }
     
-    static var top: EndPoint {
-        EndPoint(path: "") // TODO: Check this info - replace
+    static var all: EndPoint {
+        EndPoint(path: "/character")
     }
 }
