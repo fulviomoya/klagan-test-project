@@ -12,6 +12,9 @@
 		D603B38A2A5BE6C400F54DDA /* AppSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B3892A5BE6C400F54DDA /* AppSpacing.swift */; };
 		D603B38C2A5BF52200F54DDA /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B38B2A5BF52200F54DDA /* TextStyle.swift */; };
 		D603B38E2A5BF6D400F54DDA /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B38D2A5BF6D400F54DDA /* AppColor.swift */; };
+		D603B3932A5C4FEB00F54DDA /* HomeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B3922A5C4FEB00F54DDA /* HomeViewController+Extension.swift */; };
+		D603B3962A5C9EC800F54DDA /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B3952A5C9EC800F54DDA /* Request.swift */; };
+		D603B39A2A5C9FCF00F54DDA /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B3992A5C9FCF00F54DDA /* EndPoint.swift */; };
 		D62127112A4BA91E0032B737 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62127102A4BA91E0032B737 /* AppDelegate.swift */; };
 		D62127132A4BA91E0032B737 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62127122A4BA91E0032B737 /* SceneDelegate.swift */; };
 		D62127152A4BA91E0032B737 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62127142A4BA91E0032B737 /* HomeViewController.swift */; };
@@ -27,6 +30,9 @@
 		D603B3892A5BE6C400F54DDA /* AppSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSpacing.swift; sourceTree = "<group>"; };
 		D603B38B2A5BF52200F54DDA /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		D603B38D2A5BF6D400F54DDA /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		D603B3922A5C4FEB00F54DDA /* HomeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extension.swift"; sourceTree = "<group>"; };
+		D603B3952A5C9EC800F54DDA /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		D603B3992A5C9FCF00F54DDA /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		D621270D2A4BA91E0032B737 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62127102A4BA91E0032B737 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D62127122A4BA91E0032B737 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +87,7 @@
 			children = (
 				D603B3902A5BFA6D00F54DDA /* ViewCell */,
 				D62127142A4BA91E0032B737 /* HomeViewController.swift */,
+				D603B3922A5C4FEB00F54DDA /* HomeViewController+Extension.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -98,6 +105,15 @@
 			children = (
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		D603B3942A5C9EAA00F54DDA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D603B3952A5C9EC800F54DDA /* Request.swift */,
+				D603B3992A5C9FCF00F54DDA /* EndPoint.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		D62127042A4BA91E0032B737 = {
@@ -121,6 +137,7 @@
 			children = (
 				D62127102A4BA91E0032B737 /* AppDelegate.swift */,
 				D62127122A4BA91E0032B737 /* SceneDelegate.swift */,
+				D603B3942A5C9EAA00F54DDA /* Networking */,
 				D62127262A4BB1020032B737 /* Managers */,
 				D603B3852A5BE30E00F54DDA /* Models */,
 				D62127252A4BB0B70032B737 /* Screens */,
@@ -228,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D603B38C2A5BF52200F54DDA /* TextStyle.swift in Sources */,
+				D603B3962A5C9EC800F54DDA /* Request.swift in Sources */,
 				D603B38E2A5BF6D400F54DDA /* AppColor.swift in Sources */,
 				D603B3842A5BE12900F54DDA /* CharacterViewCell.swift in Sources */,
 				D603B38A2A5BE6C400F54DDA /* AppSpacing.swift in Sources */,
@@ -235,7 +253,9 @@
 				D62127152A4BA91E0032B737 /* HomeViewController.swift in Sources */,
 				D621272B2A4BB2090032B737 /* DetailViewController.swift in Sources */,
 				D62127112A4BA91E0032B737 /* AppDelegate.swift in Sources */,
+				D603B3932A5C4FEB00F54DDA /* HomeViewController+Extension.swift in Sources */,
 				D603B3872A5BE32A00F54DDA /* CharacterModel.swift in Sources */,
+				D603B39A2A5C9FCF00F54DDA /* EndPoint.swift in Sources */,
 				D62127132A4BA91E0032B737 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

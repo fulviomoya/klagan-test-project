@@ -6,21 +6,31 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    private static let cellIdentifier = String(describing: HomeViewController.self)
-    private static let verticalSpacing = AppSpacing.spacing2
+     
+    static let cellIdentifier = String(describing: HomeViewController.self)
     
     static let cellHeight: CGFloat = {
-        return (AppSpacing.spacing7 + verticalSpacing) * 2
+        return (AppSpacing.spacing7 +  AppSpacing.spacing2) * 2
+    }()
+    
+    private lazy var flowLayou: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        
+        layout.sectionInset = UIEdgeInsets(top: AppSpacing.spacing4, left: AppSpacing.spacing4,
+                                           bottom: AppSpacing.spacing4, right: AppSpacing.spacing4)
+        layout.itemSize = CGSize(width: view.frame.width * 0.44, height: HomeViewController.cellHeight)
+        
+        return layout
     }()
     
     private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.frame.width * 0.44, height: HomeViewController.cellHeight)
-        layout.sectionInset = UIEdgeInsets(top: AppSpacing.spacing4, left: AppSpacing.spacing4,
-                                           bottom: AppSpacing.spacing4, right: AppSpacing.spacing4)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayou)
+        collectionView.register(CharacterViewCell.self,
+                                    forCellWithReuseIdentifier: HomeViewController.cellIdentifier)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.backgroundColor = AppColor.gray200
+       
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -34,11 +44,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupCollectionViewGrid(to parent: UIView){
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(CharacterViewCell.self,
-                                forCellWithReuseIdentifier: HomeViewController.cellIdentifier)
-        
+       
         // Activate constraints
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: parent.leadingAnchor),
@@ -47,26 +53,4 @@ class HomeViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -AppSpacing.spacing4),
         ])
     }
-}
-
-// MARK : - CollectionViewDataSource
-extension HomeViewController : UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100 //TODO: change to the correct value
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewController.cellIdentifier,
-                                                      for: indexPath) as! CharacterViewCell
-        
-        let character = CharacterModel(id: 1, name: "Juan", species: "Humano")
-        cell.setup(with: character)
-        return cell
-    }
-}
-
-// MARK : - CollectionViewDelegate
-extension HomeViewController : UICollectionViewDelegate {
-    
-   
 }
