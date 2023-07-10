@@ -2,7 +2,12 @@
 //  CharacterModel.swift
 //  RickAndMorty
 //
-//  Created by Fulvio A. Moya on 10/7/23.
-//
+
 
 import Foundation
+
+struct CharacterModel {
+    let id: Int
+    let name: String
+    let species: String
+}

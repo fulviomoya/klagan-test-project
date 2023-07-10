@@ -2,8 +2,6 @@
 //  SceneDelegate.swift
 //  RickAndMorty
 //
-//  Created by Fulvio A. Moya on 25/6/23.
-//
 
 import UIKit
 
@@ -13,9 +11,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController()
+        
+        let navigationController = UINavigationController(rootViewController: HomeViewController())
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     

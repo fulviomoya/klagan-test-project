@@ -6,7 +6,6 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
     private static let cellIdentifier = String(describing: HomeViewController.self)
     private static let verticalSpacing = AppSpacing.spacing2
     
@@ -29,34 +28,34 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(collectionView)
+        
         setupCollectionViewGrid(to: self.view)
     }
     
     private func setupCollectionViewGrid(to parent: UIView){
-        view.addSubview(collectionView)
-        
-        collectionView.register(CharacterViewCell.self, forCellWithReuseIdentifier: HomeViewController.cellIdentifier)
+        collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(CharacterViewCell.self,
+                                forCellWithReuseIdentifier: HomeViewController.cellIdentifier)
         
         // Activate constraints
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: parent.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: parent.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: parent.topAnchor, constant: AppSpacing.spacing9),
+            collectionView.topAnchor.constraint(equalTo: parent.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -AppSpacing.spacing4),
         ])
     }
 }
 
-// MARK : - ViewDataSource
+// MARK : - CollectionViewDataSource
 extension HomeViewController : UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 100 //TODO: change to the correct value
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //TODO: Search best practice to deque...
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewController.cellIdentifier,
                                                       for: indexPath) as! CharacterViewCell
         
@@ -64,5 +63,10 @@ extension HomeViewController : UICollectionViewDataSource {
         cell.setup(with: character)
         return cell
     }
+}
+
+// MARK : - CollectionViewDelegate
+extension HomeViewController : UICollectionViewDelegate {
     
+   
 }
