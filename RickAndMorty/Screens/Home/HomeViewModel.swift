@@ -3,10 +3,21 @@
 //  RickAndMorty
 //
 
+import Foundation
+import UIKit
 import Combine
 
-class HomeViewModel {
-    var characterList = CurrentValueSubject<[CharacterModel], Never>([])
+
+protocol HomeViewModelProtocol {
+    //var thumbnailImagePublisher: CurrentValueSubject<UIImage, Never>  { get }
+    
+    func fetchCharacters()
+  //  func fetchImage(thumbnailURL url: String)
+    func cancel() 
+}
+
+class HomeViewModel: HomeViewModelProtocol {
+    var characterListPublisher = CurrentValueSubject<[CharacterModel], Never>([])
     private var listSubscription: AnyCancellable?
     private let service: HomeServiceProtocol
     
@@ -21,20 +32,21 @@ class HomeViewModel {
         }
         
         self.listSubscription = service.getCharacters()
-            .sink(receiveCompletion: { (receivedCompletion) in
+            .sink(receiveCompletion: { [weak self] receivedCompletion in
                 switch receivedCompletion {
                 case .finished:
                     print("Request finished")
-                    self.listSubscription = nil
+                    self?.listSubscription = nil
                 case .failure(let error):
                     print("Request error: \(error)")
                 }
-            }, receiveValue: { response in
+            }, receiveValue: { [weak self] response in
                 print("Fetched data successfully")
-                self.characterList.send(CharacterListModel(response).caracterList)
+                self?.characterListPublisher.send(CharacterListModel(response).caracterList)
             })
     }
     
+   
     deinit {
         self.cancel()
     }

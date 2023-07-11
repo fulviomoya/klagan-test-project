@@ -9,11 +9,11 @@ import UIKit
 // MARK: - CollectionViewDataSource
 extension HomeViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.characterList.value.count + 1
+        return viewModel.characterListPublisher.value.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == viewModel.characterList.value.count {
+        if indexPath.row == viewModel.characterListPublisher.value.count {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadingViewCell.reuseIdentifier,
                                                                 for: indexPath) as? LoadingViewCell else {
                 return UICollectionViewCell(frame: .zero)
@@ -22,8 +22,7 @@ extension HomeViewController : UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterViewCell.reusableIdentifier,
                                                           for: indexPath) as! CharacterViewCell
-            
-            cell.setupView(withViewModel: viewModel.characterList.value[indexPath.row])
+            cell.setupView(withModel: viewModel.characterListPublisher.value[indexPath.row])
             return cell
         }
     }
@@ -34,7 +33,7 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if indexPath.row == viewModel.characterList.value.count {
+        if indexPath.row == viewModel.characterListPublisher.value.count {
             let layout = collectionViewLayout as! UICollectionViewFlowLayout
             layout.sectionInset = UIEdgeInsets(top: AppSpacing.spacing2, left: AppSpacing.spacing2,
                                                bottom: AppSpacing.spacing2, right: AppSpacing.spacing2)

@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         self.networkManager = NetworkManager(baseURL: baseURL)
-        
         return true
     }
 

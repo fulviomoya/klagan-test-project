@@ -4,11 +4,14 @@
 //
 
 import UIKit
+import Combine
 
 class CharacterViewCell: UICollectionViewCell {
     private static let iconWrapperWidth: CGFloat = AppSpacing.spacing8
-        
+    
     static let reusableIdentifier: String = String(describing: CharacterViewCell.self)
+    private var imageDataSubscription: AnyCancellable?
+     
     
     private lazy var thumbnailImage: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -22,7 +25,6 @@ class CharacterViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 2
         label.font = AppTextStyle.xs.bold.font
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -43,6 +45,7 @@ class CharacterViewCell: UICollectionViewCell {
     // must call super
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .white
         setupViews()
     }
     
@@ -68,7 +71,7 @@ class CharacterViewCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: thumbnailImage.topAnchor, constant: AppSpacing.spacing1),
+            titleLabel.topAnchor.constraint(equalTo: thumbnailImage.topAnchor, constant: AppSpacing.spacing3),
             titleLabel.leadingAnchor.constraint(equalTo: thumbnailImage.trailingAnchor, constant: AppSpacing.spacing2),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -AppSpacing.spacing1),
         ])
@@ -80,10 +83,14 @@ class CharacterViewCell: UICollectionViewCell {
         ])
     }
     
-    func setupView(withViewModel character: CharacterModel) {
-        self.backgroundColor = .white
-        self.thumbnailImage.image = UIImage(named: "default_image")
+    func setupView(withModel character: CharacterModel) {
+        character.fetchImage()
+        
         self.titleLabel.text = character.name
         self.valueLabel.text = character.species
+        
+        imageDataSubscription = character.thumbnailImagePublisher.sink { theImage in
+            self.thumbnailImage.image = theImage
+        }
     }
 }

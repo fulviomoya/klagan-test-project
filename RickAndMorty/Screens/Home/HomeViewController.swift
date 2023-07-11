@@ -66,7 +66,7 @@ class HomeViewController: UIViewController {
     }
     
     fileprivate func bindingAndRefreshLoadedData() {
-        viewModel.characterList.sink { [weak self] newValue in
+        viewModel.characterListPublisher.sink { [weak self] newValue in
             guard let self = self else { return }
             if !newValue.isEmpty {
                 collectionView.reloadData()
