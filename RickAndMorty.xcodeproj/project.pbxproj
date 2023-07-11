@@ -24,6 +24,7 @@
 		D603B3AD2A5CFB3D00F54DDA /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B3AC2A5CFB3D00F54DDA /* CharacterModel.swift */; };
 		D603B3B02A5DA56900F54DDA /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B3AF2A5DA56900F54DDA /* UIImage+Extensions.swift */; };
 		D603B3B32A5DA65000F54DDA /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603B3B22A5DA65000F54DDA /* ImageService.swift */; };
+		D603B3B62A5DCC9700F54DDA /* home_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D603B3B52A5DCC9700F54DDA /* home_screen.png */; };
 		D62127112A4BA91E0032B737 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62127102A4BA91E0032B737 /* AppDelegate.swift */; };
 		D62127132A4BA91E0032B737 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62127122A4BA91E0032B737 /* SceneDelegate.swift */; };
 		D62127152A4BA91E0032B737 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62127142A4BA91E0032B737 /* HomeViewController.swift */; };
@@ -52,6 +53,7 @@
 		D603B3AC2A5CFB3D00F54DDA /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		D603B3AF2A5DA56900F54DDA /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		D603B3B22A5DA65000F54DDA /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		D603B3B52A5DCC9700F54DDA /* home_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_screen.png; sourceTree = "<group>"; };
 		D621270D2A4BA91E0032B737 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62127102A4BA91E0032B737 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D62127122A4BA91E0032B737 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,9 +167,18 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		D603B3B42A5DCC5D00F54DDA /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				D603B3B52A5DCC9700F54DDA /* home_screen.png */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
 		D62127042A4BA91E0032B737 = {
 			isa = PBXGroup;
 			children = (
+				D603B3B42A5DCC5D00F54DDA /* Docs */,
 				D603B3AB2A5CF5F800F54DDA /* README.md */,
 				D621270F2A4BA91E0032B737 /* RickAndMorty */,
 				D621270E2A4BA91E0032B737 /* Products */,
@@ -286,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D621271D2A4BA9200032B737 /* LaunchScreen.storyboard in Resources */,
+				D603B3B62A5DCC9700F54DDA /* home_screen.png in Resources */,
 				D621271A2A4BA9200032B737 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
