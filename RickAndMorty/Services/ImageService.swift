@@ -28,6 +28,6 @@ class ImageService: ImageServiceProtocol {
             })
             .subscribe(on: backgroundSchduler)
             .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
+            //.eraseToAnyPublisher()
     }
 }

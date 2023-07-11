@@ -83,13 +83,11 @@ class CharacterViewCell: UICollectionViewCell {
         ])
     }
     
-    func setupView(withModel character: CharacterModel) {
-        character.fetchImage()
-        
+    func setupView(withModel character: CharacterModel, viewModel: HomeViewModelProtocol) {
         self.titleLabel.text = character.name
         self.valueLabel.text = character.species
         
-        imageDataSubscription = character.thumbnailImagePublisher.sink { theImage in
+        imageDataSubscription = viewModel.thumbnailImagePublisher.sink { theImage in
             self.thumbnailImage.image = theImage
         }
     }

@@ -11,6 +11,8 @@ class HomeViewController: UIViewController {
     var viewModel = HomeViewModel(service: HomeService.shared)
     var cancellables: Set<AnyCancellable> = []
     
+    var thumbnailImagePublisher = CurrentValueSubject<UIImage, Never>(.placeholder)
+    
     static let cellHeight: CGFloat = {
         return (AppSpacing.spacing7 + AppSpacing.spacing2) * 2
     }()

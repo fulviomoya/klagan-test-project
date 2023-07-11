@@ -22,7 +22,9 @@ extension HomeViewController : UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterViewCell.reusableIdentifier,
                                                           for: indexPath) as! CharacterViewCell
-            cell.setupView(withModel: viewModel.characterListPublisher.value[indexPath.row])
+            
+            viewModel.fetchImage(thumbnailURL: viewModel.characterListPublisher.value[indexPath.row].image)
+            cell.setupView(withModel: viewModel.characterListPublisher.value[indexPath.row], viewModel: viewModel)
             return cell
         }
     }
