@@ -38,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     static var sharedNetworkManager: NetworkManagerProtocol? {
-        guard let appDelegate = UIApplication.shared.delegate as? Self else { // Checking if the app have an instance of AppDelegate allocated
+        // Checking if the app have an instance of AppDelegate allocated
+        guard let appDelegate = UIApplication.shared.delegate as? Self else {
             return nil
         }
         

@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     static let cellHeight: CGFloat = {
         return (AppSpacing.spacing7 + AppSpacing.spacing2) * 2
     }()
-  
+    
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.register(CharacterViewCell.self,
@@ -35,27 +35,18 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        setupCollectionViewGrid(to: self.view)
+        setupNavigationBarAppearance()
+        setupCollectionViewGridConstraints(to: self.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated) //TODO: Check this
         viewModel.fetchCharacters()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        viewModel.characterList.sink { [weak self] newValue in
-            guard let self = self else { return }
-            if !newValue.isEmpty {
-                collectionView.reloadData()
-                collectionView.layoutIfNeeded()
-            }
-        }.store(in: &cancellables)
-        
-        self.view.layoutIfNeeded()
+        bindingAndRefreshLoadedData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -63,8 +54,29 @@ class HomeViewController: UIViewController {
         viewModel.cancel()
     }
     
-    private func setupCollectionViewGrid(to parent: UIView){
-        // Activate constraints
+    fileprivate func setupNavigationBarAppearance() {
+        navigationItem.title = "List of Characters" //TODO: Localizable...
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = UIColor(red: 0.2431372549, green: 0.7647058824, blue: 0.8392156863, alpha: 1) //TODO: Remove hardcode
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
+    fileprivate func bindingAndRefreshLoadedData() {
+        viewModel.characterList.sink { [weak self] newValue in
+            guard let self = self else { return }
+            if !newValue.isEmpty {
+                collectionView.reloadData()
+                collectionView.layoutIfNeeded()
+            }
+        }.store(in: &cancellables)
+        self.view.layoutIfNeeded()
+    }
+    
+    private func setupCollectionViewGridConstraints(to parent: UIView){
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: parent.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: parent.trailingAnchor),

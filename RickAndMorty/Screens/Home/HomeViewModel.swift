@@ -14,9 +14,9 @@ class HomeViewModel {
         self.service = service
     }
     
-    
     func fetchCharacters() {
-        if let currentSubscription = listSubscription { // If currently has an background running cancel previous
+        if let currentSubscription = listSubscription {
+            // If currently has an background running thread process let's cancel the previous one
             currentSubscription.cancel()
         }
         
