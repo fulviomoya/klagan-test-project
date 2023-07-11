@@ -19,5 +19,7 @@
 			</array>
 		</dict>
 	</dict>
+    <key>BaseURL</key>
+    <string>https://rickandmortyapi.com/api</string>
 </dict>
 </plist>

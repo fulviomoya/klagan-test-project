@@ -7,6 +7,8 @@ import UIKit
 
 class CharacterViewCell: UICollectionViewCell {
     private static let iconWrapperWidth: CGFloat = AppSpacing.spacing8
+        
+    static let reusableIdentifier: String = String(describing: CharacterViewCell.self)
     
     private lazy var thumbnailImage: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -77,7 +79,7 @@ class CharacterViewCell: UICollectionViewCell {
         ])
     }
     
-    func setup(with character: CharacterModel) {
+    func setupView(withViewModel character: CharacterModel) {
         self.backgroundColor = .white
         self.thumbnailImage.image = UIImage(named: "default_image")
         self.titleLabel.text = character.name

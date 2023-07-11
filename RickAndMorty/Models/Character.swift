@@ -1,5 +1,5 @@
 //
-//  CharacterModel.swift
+//  Character.swift
 //  RickAndMorty
 //
 
@@ -8,7 +8,7 @@ import Foundation
 
 struct EmptyData: Codable {}
 
-struct CharacterModel: Codable {
+struct Character: Codable {
     let id: Int
     let name: String
     let status: String

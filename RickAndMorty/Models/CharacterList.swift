@@ -8,7 +8,7 @@ import Foundation
 struct CharacterList: Codable {
     
     let info: ResponseInfo
-    let results: [CharacterModel]
+    let results: [Character]
     
     struct ResponseInfo: Codable {
         let count: Int

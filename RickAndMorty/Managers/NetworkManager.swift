@@ -12,7 +12,6 @@ protocol NetworkManagerProtocol {
     func request<Request: RequestProtocol>(_ request: Request) -> AnyPublisher<Request.Response, Error>
 }
 
-// MARK - NetworkManagerProtocol
 class NetworkManager: NetworkManagerProtocol {
     var baseUrl: String
     var defaultSession: URLSession
