@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-// MARK : - CollectionViewDataSource
+// MARK: - CollectionViewDataSource
 extension HomeViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.characterList.value.count + 1
@@ -24,8 +24,29 @@ extension HomeViewController : UICollectionViewDataSource {
                                                           for: indexPath) as! CharacterViewCell
             
             cell.setupView(withViewModel: viewModel.characterList.value[indexPath.row])
-            /* cell.setupView(withViewModel: CharacterModel(Character(id: 1, name: "asdf", status: "asdf", species: "asdf", type: "asdf", gender: "asdf", origin: Character.BasicInformation(name: "asdf", url: "adsf"), location: Character.BasicInformation(name: "adsf", url: "asdf"), image: "") ))*/
             return cell
         }
     }
 } 
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension HomeViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if indexPath.row == viewModel.characterList.value.count {
+            let layout = collectionViewLayout as! UICollectionViewFlowLayout
+            layout.sectionInset = UIEdgeInsets(top: AppSpacing.spacing2, left: AppSpacing.spacing2,
+                                               bottom: AppSpacing.spacing2, right: AppSpacing.spacing2)
+            
+            //the item width must be less than the width of the UICollectionView
+            //minus the section insets left and right values,
+            //minus the content insets left and right values.
+            return CGSize(width: view.frame.width - (AppSpacing.spacing2 * 2),
+                          height: HomeViewController.cellHeight)
+            
+        }
+    
+        return CGSize(width: view.frame.width * 0.46, height: HomeViewController.cellHeight)
+    }
+}

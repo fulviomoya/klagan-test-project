@@ -22,7 +22,8 @@ class CharacterViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = TextStyle.sm.bold.font
+        label.numberOfLines = 2
+        label.font = AppTextStyle.xs.bold.font
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +33,7 @@ class CharacterViewCell: UICollectionViewCell {
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
-        label.font = TextStyle.xs.font
+        label.font = AppTextStyle.xs.font
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -68,13 +69,13 @@ class CharacterViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: thumbnailImage.topAnchor, constant: AppSpacing.spacing1),
-            titleLabel.leadingAnchor.constraint(equalTo: thumbnailImage.trailingAnchor, constant: AppSpacing.spacing3),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: thumbnailImage.trailingAnchor, constant: AppSpacing.spacing2),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -AppSpacing.spacing1),
         ])
         
         NSLayoutConstraint.activate([
             valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: AppSpacing.spacing1),
-            valueLabel.leadingAnchor.constraint(equalTo: thumbnailImage.trailingAnchor, constant: AppSpacing.spacing3),
+            valueLabel.leadingAnchor.constraint(equalTo: thumbnailImage.trailingAnchor, constant: AppSpacing.spacing2),
             valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -AppSpacing.spacing1),
         ])
     }

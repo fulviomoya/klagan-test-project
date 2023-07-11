@@ -8,7 +8,7 @@ import Combine
 
 protocol NetworkManagerProtocol {
     var baseUrl: String { get }
-    
+   
     func request<Request: RequestProtocol>(_ request: Request) -> AnyPublisher<Request.Response, Error>
 }
 

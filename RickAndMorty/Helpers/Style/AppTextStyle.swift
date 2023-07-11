@@ -1,27 +1,27 @@
 //
-//  TextStyle.swift
+//  AppTextStyle.swift
 //  RickAndMorty
 //
 
 import UIKit
 
-public class TextStyle {
+public class AppTextStyle {
     
     private let isHeadline: Bool
     private let isBold: Bool
     private let isItalic: Bool
     private let fontSize: CGFloat
 
-    lazy var bold: TextStyle = {
-        return TextStyle(
+    lazy var bold: AppTextStyle = {
+        return AppTextStyle(
             isHeadline: self.isHeadline,
             isBold: true,
             isItalic: self.isItalic,
             fontSize: self.fontSize)
     }()
 
-    lazy var italic: TextStyle = {
-        return TextStyle(
+    lazy var italic: AppTextStyle = {
+        return AppTextStyle(
             isHeadline: self.isHeadline,
             isBold: self.isBold,
             isItalic: true,
@@ -53,9 +53,9 @@ public class TextStyle {
 
 }
 
-public extension TextStyle {
-    static let lg = TextStyle(isHeadline: false, fontSize: 18)
-    static let md = TextStyle(isHeadline: false, fontSize: 16)
-    static let sm = TextStyle(isHeadline: false, fontSize: 14)
-    static let xs = TextStyle(isHeadline: false, fontSize: 12)
+public extension AppTextStyle {
+    static let lg = AppTextStyle(isHeadline: false, fontSize: 18)
+    static let md = AppTextStyle(isHeadline: false, fontSize: 16)
+    static let sm = AppTextStyle(isHeadline: false, fontSize: 14)
+    static let xs = AppTextStyle(isHeadline: false, fontSize: 12)
 }
